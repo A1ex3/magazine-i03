@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendor/jquery-3.6.1.min.js"></script>
     <script src ="vendor/js.cookie.js"></script>
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -18,13 +19,17 @@
     var str = 
     `<table border='1'><tr><th>id</th> <th>title</th> <th>desc</th> <th>price</th> <th>name</th></tr>`;
     html=$.parseHTML(str)
+
+    
     // {"response":[{"id":1,"title":"","desc":"","price":2000,"count":""},...]}
     $.get('get.tovary.php', function(data) {
         let otvet = JSON.parse(data)
+        
+        
         for(let i =0;i<otvet.response.length;i++){
             //alert(otvet.response[i].title)
-            if(cook == 1){
-                str+=`<tr><td>${otvet.response[i].id}</td><td>${otvet.response[i].title}</td><td>${otvet.response[i].desc}</td><td>${otvet.response[i].price}</td><td>${otvet.response[i].name}</td><td><button>Купить</button></td></tr>`;
+            if(cook){
+                str+=`<tr><td>${otvet.response[i].id}</td><td>${otvet.response[i].title}</td><td>${otvet.response[i].desc}</td><td>${otvet.response[i].price}</td><td>${otvet.response[i].name}</td><td><a href="korzina.html"><button>Купить</button></td></a></tr>`;
             }
             else{
                 str+=`<tr><td>${otvet.response[i].id}</td><td>${otvet.response[i].title}</td><td>${otvet.response[i].desc}</td><td>${otvet.response[i].price}</td><td>${otvet.response[i].name}</td></tr>`;

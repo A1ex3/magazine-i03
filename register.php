@@ -23,7 +23,7 @@ if(!empty($_POST['login'])&&!empty($_POST['password'])){
         $stmt = $db->query('SELECT LAST_INSERT_ID() AS ID')->fetch();
 		if(isset($stmt['ID'])){	
 			
-			$result .= sprintf('{"id":%d,"text":"OK"}',$stmt['ID']);
+			$result .= sprintf('{"id":%d,"token":"%s"}',$stmt['ID'],$token);
 			$result .='}';
 	}
 }	
